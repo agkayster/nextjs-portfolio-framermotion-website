@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import NavLink from './navLink';
 
 const links = [
 	{ url: '/', title: 'Home' },
@@ -27,17 +28,17 @@ const Navbar = () => {
 	return (
 		/* 1st Step: px-4 is for small screen, sm:px-8 means after small screen, md:px-12 is for medium screen, 
     lg:px-20 is for large screen, xl:px-48 is for biggest screen. The responsiveness should come in this order */
-		<div className='h-full flex flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48'>
+		<div
+			className='h-full flex flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 
+    text-xl'>
 			{/* LINKS */}
 			<div className='hidden md:flex flex-row gap-4 w-1/3'>
 				{links.map(({ url, title }) => (
-					<Link href={url} key={title}>
-						{title}
-					</Link>
+					<NavLink key={title} url={url} title={title} />
 				))}
 			</div>
 			{/*2nd step: LOGO */}
-			<div className='md:hidden lg:flex items-center justify-center w-1/3'>
+			<div className='md:hidden lg:flex items-center xl:justify-center xl:w-1/3'>
 				<Link
 					href='/'
 					className='text-sm bg-black rounded-md p-1 font-semibold flex items-center justify-center'>
