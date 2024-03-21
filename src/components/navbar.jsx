@@ -53,6 +53,15 @@ const Navbar = () => {
 		},
 	};
 
+	const listVariants = {
+		closed: {
+			x: '100vw',
+		},
+		opened: {
+			x: 0,
+		},
+	};
+
 	const handleOpenNavBurger = () => setOpen(!open);
 
 	return (
@@ -113,13 +122,17 @@ const Navbar = () => {
 				</button>
 				{/* 5th Step: MENU LIST hanldes what shows when we click on the MENU BUTTON */}
 				{open && (
-					<div className='absolute top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-8 text-4xl'>
+					<motion.div
+						variants={listVariants}
+						initial='closed'
+						animate='opened'
+						className='absolute top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-8 text-4xl'>
 						{links.map(({ url, title }) => (
 							<Link href={url} key={title}>
 								{title}
 							</Link>
 						))}
-					</div>
+					</motion.div>
 				)}
 			</div>
 		</div>
