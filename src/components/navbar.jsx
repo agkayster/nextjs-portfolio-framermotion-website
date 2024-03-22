@@ -135,7 +135,7 @@ const Navbar = () => {
 						animate={open ? 'opened' : 'closed'}
 						className='w-10 h-1 bg-black rounded origin-left'></motion.div>
 				</button>
-				{/* 5th Step: MENU LIST hanldes what shows when we click on the MENU BUTTON */}
+				{/* 5th Step: MENU LIST handles what shows when we click on the MENU BUTTON */}
 				{open && (
 					<motion.div
 						variants={listVariants}
@@ -143,13 +143,13 @@ const Navbar = () => {
 						animate='opened'
 						className='absolute top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-8 text-4xl z-40'>
 						{links.map(({ url, title }) => (
-							<motion.div
-								variants={listItemVariants}
-								animate
-								className=''
-								key={title}>
-								<Link href={url}>{title}</Link>
-							</motion.div>
+							<Link href={url} key={title}>
+								{title}
+							</Link>
+
+							// <motion.div variants={listItemVariants} key={title}>
+							// 	<Link href={url}>{title}</Link>
+							// </motion.div>
 						))}
 					</motion.div>
 				)}
