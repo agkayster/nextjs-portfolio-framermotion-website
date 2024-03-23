@@ -2,6 +2,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const skillsSet = [
+	{ id: 1, skill: 'JavaScript' },
+	{ id: 2, skill: 'TypeScript' },
+	{ id: 3, skill: 'React.js' },
+	{ id: 4, skill: 'Next.js' },
+	{ id: 5, skill: 'SCSS' },
+	{ id: 6, skill: 'Python' },
+	{ id: 7, skill: 'Django' },
+	{ id: 8, skill: 'Tailwind CSS' },
+	{ id: 9, skill: 'MongoDB' },
+	{ id: 10, skill: 'PostgreSQL' },
+	{ id: 11, skill: 'Node.js' },
+	{ id: 12, skill: 'Express.js' },
+	{ id: 13, skill: 'Spring Boot' },
+	{ id: 14, skill: 'GraphQL' },
+	{ id: 15, skill: 'Apollo' },
+	{ id: 16, skill: 'Redux' },
+	{ id: 17, skill: 'Framer Motion' },
+	{ id: 18, skill: 'Webpack' },
+	{ id: 19, skill: 'Vite' },
+	{ id: 20, skill: 'Docker' },
+	{ id: 21, skill: 'AWS' },
+	{ id: 22, skill: 'Firebase' },
+	{ id: 23, skill: 'Git' },
+	{ id: 24, skill: 'GitHub' },
+	{ id: 25, skill: 'Figma' },
+	{ id: 26, skill: 'Pandas' },
+	{ id: 27, skill: 'Jupyter' },
+];
+
 const AboutPage = () => {
 	return (
 		<motion.div
@@ -71,7 +101,41 @@ const AboutPage = () => {
 						</svg>
 					</div>
 					{/* SKILLS CONTAINER */}
-					<div className=''>SKILLS</div>
+					<div className='flex flex-col gap-12 justify-center'>
+						{/* SKILLS TITLE */}
+						<h1 className='font-bold text-2xl'>SKILLS</h1>
+						{/* SKILLS LIST */}
+						<div className='flex flex-row flex-wrap gap-x-4 gap-y-4'>
+							{skillsSet.map(({ id, skill }) => (
+								<div
+									key={id}
+									className='rounded p-2 text-sm cursor-pointer bg-black text-white hover:bg-white
+									 hover:text-black'>
+									{skill}
+								</div>
+							))}
+						</div>
+						{/* SKILLS SCROLL SVG */}
+						<svg
+							viewBox='0 0 24 24'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+							width={50}
+							height={50}>
+							<path
+								d='M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z'
+								stroke='#000000'
+								strokeWidth='1'></path>
+							<path
+								d='M12 6V14'
+								stroke='#000000'
+								strokeWidth='1'></path>
+							<path
+								d='M15 11L12 14L9 11'
+								stroke='#000000'
+								strokeWidth='1'></path>
+						</svg>
+					</div>
 					{/* EXPERIENCE CONTAINER */}
 					<div className=''>EXPERIENCE</div>
 				</div>
