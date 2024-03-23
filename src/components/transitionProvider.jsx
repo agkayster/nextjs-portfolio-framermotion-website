@@ -49,8 +49,8 @@ const TransitionProvider = ({ children }) => {
 				</div>
 
 				{/* takes the remaining height after the navbar */}
-				<div className='h-full'>{children}</div>
-				{/* <div className='h-[calc(100vh-6rem)]'>{children}</div> */}
+				{/* <div className='h-full'>{children}</div> */}
+				<div className='h-[calc(100vh-6rem)]'>{children}</div>
 			</div>
 		</AnimatePresence>
 	);
