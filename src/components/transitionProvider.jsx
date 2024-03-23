@@ -13,7 +13,7 @@ const TransitionProvider = ({ children }) => {
 			<div
 				/* pass in pathname as key to track when we click on another page */
 				key={pathname}
-				className='w-screen h-screen bg-gradient-to-b from-blue-100 to-red-100'>
+				className='w-screen h-full bg-gradient-to-b from-blue-100 to-red-100'>
 				{/* our first animation, comes from above and goes down */}
 				<motion.div
 					className='h-screen w-screen fixed bg-black rounded-b-[100px] z-40'
@@ -49,7 +49,8 @@ const TransitionProvider = ({ children }) => {
 				</div>
 
 				{/* takes the remaining height after the navbar */}
-				<div className='h-[calc(100vh-6rem)]'>{children}</div>
+				<div className='h-full'>{children}</div>
+				{/* <div className='h-[calc(100vh-6rem)]'>{children}</div> */}
 			</div>
 		</AnimatePresence>
 	);
