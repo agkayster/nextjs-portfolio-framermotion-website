@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, useInView } from 'framer-motion';
 import BrainComponent from '@/components/brain';
 
 const skillsSet = [
@@ -37,6 +37,17 @@ const AboutPage = () => {
 	const containerRef = useRef();
 
 	const { scrollYProgress } = useScroll({ container: containerRef });
+
+	const skillRef = useRef();
+
+	const isSkillRefInView = useInView(skillRef);
+
+	// below is for the animation to happen once
+	// const isSkillRefInView = useInView(skillRef, { once: true });
+
+	const experienceRef = useRef();
+
+	const isExperienceRefInView = useInView(experienceRef);
 
 	return (
 		<motion.div
@@ -87,7 +98,14 @@ const AboutPage = () => {
 							</svg>
 						</div>
 						{/* BIOGRAPHY SCROLL SVG */}
-						<svg
+						<motion.svg
+							initial={{ opacity: 0.2, y: 0 }}
+							animate={{ opacity: 1, y: '10px' }}
+							transition={{
+								repeat: Infinity,
+								duration: 3,
+								ease: 'easeInOut',
+							}}
 							viewBox='0 0 24 24'
 							fill='none'
 							xmlns='http://www.w3.org/2000/svg'
@@ -105,14 +123,25 @@ const AboutPage = () => {
 								d='M15 11L12 14L9 11'
 								stroke='#000000'
 								strokeWidth='1'></path>
-						</svg>
+						</motion.svg>
 					</div>
 					{/* SKILLS CONTAINER */}
-					<div className='flex flex-col gap-12 justify-center'>
+					<div
+						className='flex flex-col gap-12 justify-center'
+						ref={skillRef}>
 						{/* SKILLS TITLE */}
-						<h1 className='font-bold text-2xl'>SKILLS</h1>
+						<motion.h1
+							initial={{ x: '-300px' }}
+							animate={isSkillRefInView ? { x: 0 } : {}}
+							transition={{ delay: 0.2 }}
+							className='font-bold text-2xl'>
+							SKILLS
+						</motion.h1>
 						{/* SKILLS LIST */}
-						<div className='flex flex-row flex-wrap gap-x-4 gap-y-4'>
+						<motion.div
+							initial={{ x: '-300px' }}
+							animate={isSkillRefInView ? { x: 0 } : {}}
+							className='flex flex-row flex-wrap gap-x-4 gap-y-4'>
 							{skillsSet.map(({ id, skill }) => (
 								<div
 									key={id}
@@ -121,9 +150,16 @@ const AboutPage = () => {
 									{skill}
 								</div>
 							))}
-						</div>
+						</motion.div>
 						{/* SKILLS SCROLL SVG */}
-						<svg
+						<motion.svg
+							initial={{ opacity: 0.2, y: 0 }}
+							animate={{ opacity: 1, y: '10px' }}
+							transition={{
+								repeat: Infinity,
+								duration: 3,
+								ease: 'easeInOut',
+							}}
 							viewBox='0 0 24 24'
 							fill='none'
 							xmlns='http://www.w3.org/2000/svg'
@@ -141,14 +177,25 @@ const AboutPage = () => {
 								d='M15 11L12 14L9 11'
 								stroke='#000000'
 								strokeWidth='1'></path>
-						</svg>
+						</motion.svg>
 					</div>
 					{/* EXPERIENCE CONTAINER */}
-					<div className='flex flex-col gap-12 justify-center pb-48'>
+					<div
+						className='flex flex-col gap-12 justify-center pb-48'
+						ref={experienceRef}>
 						{/* EXPERIENCE TITTLE */}
-						<h1 className='font-bold text-2xl'>EXPERIENCE</h1>
+						<motion.h1
+							initial={{ x: '-350px' }}
+							animate={isExperienceRefInView ? { x: 0 } : {}}
+							transition={{ delay: 0.2 }}
+							className='font-bold text-2xl'>
+							EXPERIENCE
+						</motion.h1>
 						{/* 1st EXPERIENCE LIST ITEM*/}
-						<div className='flex justify-between h-48'>
+						<motion.div
+							initial={{ x: '-350px' }}
+							animate={isExperienceRefInView ? { x: 0 } : {}}
+							className='flex justify-between h-48'>
 							{/* LEFT SIDE */}
 							<div className='w-1/3'>
 								{/* LEFT JOB TITLE */}
@@ -179,7 +226,7 @@ const AboutPage = () => {
 							</div>
 							{/* RIGHT SIDE */}
 							<div className='w-1/3'></div>
-						</div>
+						</motion.div>
 						{/* 2nd EXPERIENCE LIST ITEM*/}
 						<div className='flex flex-row justify-between h-48'>
 							{/* LEFT SIDE */}
