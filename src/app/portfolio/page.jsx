@@ -93,7 +93,13 @@ const PortfolioPage = () => {
 				{/* ROTATING ANIMATION SVG */}
 				{/* ROTATING SVG CONTAINER */}
 				<div className='relative'>
-					<svg
+					<motion.svg
+						animate={{ rotate: 360 }}
+						transition={{
+							duration: 8,
+							ease: 'linear',
+							repeat: Infinity,
+						}}
 						viewBox='0 0 300 300'
 						className='w-64 h-64 md:w-[500px] md:h-[500px]'>
 						<defs>
@@ -109,10 +115,10 @@ const PortfolioPage = () => {
 								Full-Stack Developer and AI Engineer
 							</textPath>
 						</text>
-					</svg>
+					</motion.svg>
 					<Link
 						href='/contact'
-						className='w-16 h-16 md:w-28 md:h-28 absolute top-0 left-0 right-0 bottom-0 bg-black text-white rounded-full flex items-center justify-center m-auto'>
+						className='w-16 h-16 md:w-28 md:h-28 absolute top-0 left-0 right-0 bottom-0 bg-black text-white rounded-full flex items-center justify-center m-auto cursor-pointer'>
 						Hire Me
 					</Link>
 				</div>
