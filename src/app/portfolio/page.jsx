@@ -44,7 +44,7 @@ const PortfolioPage = () => {
 
 	const { scrollYProgress } = useScroll({ target: portfolioRef });
 
-	const x = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+	const x = useTransform(scrollYProgress, [0, 1], ['0%', '-80%']);
 
 	return (
 		<motion.div
@@ -56,8 +56,10 @@ const PortfolioPage = () => {
 				<div className='w-screen h-[calc(100vh-6rem)] flex items-center justify-center text-8xl text-center'>
 					My Works
 				</div>
+				{/* PROJECT CONTAINER */}
 				<div className='sticky top-0 flex h-screen gap-4 items-center overflow-hidden'>
-					<div className='flex'>
+					<motion.div style={{ x }} className='flex'>
+						<div className='h-screen w-screen flex items-center justify-center bg-gradient-to-r from-purple-300 to-red-300' />
 						{projectList &&
 							projectList.map(
 								({ id, color, title, desc, img, link }) => (
@@ -82,6 +84,37 @@ const PortfolioPage = () => {
 									</div>
 								)
 							)}
+					</motion.div>
+				</div>
+				{/* CONTACT FOR PROJECT */}
+				<div className='h-screen w-screen flex flex-col gap-16 items-center justify-center text-center'>
+					<h1>Do you have a Project?</h1>
+					{/* ROTATING ANIMATION SVG */}
+					{/* ROTATING SVG CONTAINER */}
+					<div className='relative'>
+						<svg
+							animate={{ rotate: 360 }}
+							transition={{
+								duration: 8,
+								ease: 'linear',
+								repeat: Infinity,
+							}}
+							viewBox='0 0 300 300'
+							className='w-64 h-64 md:w-[500px] md:h-[500px] '>
+							<defs>
+								<path
+									id='circlePath'
+									d='M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 '
+								/>
+							</defs>
+							<text fill='#000'>
+								<textPath
+									xlinkHref='#circlePath'
+									className='text-xl'>
+									Front-end Developer and UI Designer
+								</textPath>
+							</text>
+						</svg>
 					</div>
 				</div>
 			</div>
